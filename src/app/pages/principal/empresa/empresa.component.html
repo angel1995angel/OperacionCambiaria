@@ -1,1 +1,119 @@
-<p>empresa works!</p>
+<div class="row"  [ngStyle]="{'display':_insert}">
+
+    <div class="col-md-12">
+  
+      <div class="card card-profile shadow">
+        <div class="card-body">
+  
+  
+  
+          <form>
+            <h6 class="heading-small text-muted mb-4">Información del Instructor</h6>
+            <div class="row">
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>Cedula</mat-label>
+                  <input matInput placeholder="Cedula" 
+                  [ngModelOptions]="{standalone: true}"
+                  (blur)="Consultar()"
+                  [(ngModel)]="Instructor.cedula"  value="{{Instructor.cedula}}">
+                  <mat-icon matSuffix (click)="Seleccionar()">search</mat-icon>
+  
+                </mat-form-field>
+              </div>
+              <div class="col-md-8">
+                <mat-form-field appearance="outline">
+                  <mat-label>Nombre completo</mat-label>
+                  <input matInput placeholder="Nombre completo" value="{{Instructor.nombre}}"
+                  [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="Instructor.nombre" >
+                  <mat-icon matSuffix>account_circle</mat-icon>
+  
+                </mat-form-field>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>Sexo</mat-label>
+                  <input matInput placeholder="Cedula" value="{{Instructor.sexo}}"
+                  [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="Instructor.sexo" >
+  
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>Especialidad</mat-label>
+                  <input matInput placeholder="Nombre completo" 
+                  [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="Instructor.especialidad" 
+                  value="{{Instructor.especialidad}}">
+  
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>Horario</mat-label>
+                  <input matInput placeholder="Nombre completo" 
+                  
+                  [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="Instructor.horario" 
+                   value="{{Instructor.horario}}">
+  
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+  
+              <div class="col-md-12 text-right">
+                  <hr>
+                  <button mat-flat-button color="primary" (click)="Guardar()">Aceptar</button>
+              </div>
+  
+          </div>
+          </form>
+  
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div  [ngStyle]="{'display':_search}">
+    <br>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button mat-icon-button aria-label="volver" (click)="atras()" >
+                <mat-icon class="texto-gray">arrow_back</mat-icon>
+            </button>
+        </div>
+    </div>
+    <mat-selection-list>
+        <mat-list *ngFor="let e of lstInstructores; let i=index "
+            style="border-bottom: 1px rgba(224, 223, 223, 0.945) solid;">
+            <div class="row">
+  
+                <div class="col-md-2 texto-detalle">
+                    {{ e.cedula | uppercase }}
+                </div>
+                <div class="col-md-6 texto-lista">
+                    {{ e.nombre | uppercase}}
+                </div>
+                <div class="col-md-3 texto-detalle">
+                    {{ e.especialidad | uppercase }}
+                </div>
+  
+                <div class="col-md-1 text-right">
+  
+                    <button mat-icon-button aria-label="Editar" (click)="editar(e)">
+                        <mat-icon class="texto-gray">edit</mat-icon>
+                    </button>
+  
+                </div>
+            </div>
+        </mat-list>
+    </mat-selection-list>
+    <br><br>
+  </div>
